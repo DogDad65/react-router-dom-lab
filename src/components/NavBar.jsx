@@ -14,7 +14,7 @@ const NavBar = () => {
           <Link to="/new-mailbox">New Mailbox</Link>
         </li>
         <li>
-          <Link to="/new-letter">New Letter</Link> {/* Add link to the new letter form */}
+          <Link to="/new-letter">New Letter</Link> 
         </li>
       </ul>
     </nav>

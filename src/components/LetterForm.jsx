@@ -5,6 +5,7 @@ const LetterForm = ({ mailboxes, addLetter }) => {
   const [mailboxId, setMailboxId] = useState(mailboxes[0]?._id || "");
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
+  const [sender, setSender] = useState(''); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -14,6 +15,7 @@ const LetterForm = ({ mailboxes, addLetter }) => {
       mailboxId: Number(mailboxId),
       recipient,
       message,
+      sender,
     };
 
     addLetter(newLetter);
@@ -37,7 +39,16 @@ const LetterForm = ({ mailboxes, addLetter }) => {
         ))}
       </select>
 
-      <label htmlFor="recipient">Recipient:</label>
+      <label htmlFor="sender">Sender Name:</label> {/* New sender input field */}
+      <input
+        type="text"
+        id="sender"
+        value={sender}
+        onChange={(e) => setSender(e.target.value)}
+        required
+      />
+
+      <label htmlFor="recipient">Recipient Name:</label>
       <input
         type="text"
         id="recipient"

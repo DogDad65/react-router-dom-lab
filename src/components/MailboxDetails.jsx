@@ -4,9 +4,14 @@ import { useParams } from 'react-router-dom';
 
 const MailboxDetails = ({ mailboxes, letters }) => {
   const { mailboxId } = useParams();
+
+  // Find the mailbox with the matching _id
   const selectedBox = mailboxes.find((mailbox) => mailbox._id === Number(mailboxId));
+
+  // Filter letters that belong to the selected mailbox
   const selectedLetters = letters.filter((letter) => letter.mailboxId === Number(mailboxId));
 
+  // If no mailbox is found, display an error message
   if (!selectedBox) {
     return <h2>Mailbox not found!</h2>;
   }
@@ -22,6 +27,7 @@ const MailboxDetails = ({ mailboxes, letters }) => {
       <ul>
         {selectedLetters.map((letter, index) => (
           <li key={index}>
+            <p><strong>Sender:</strong> {letter.sender}</p> {/* Display sender */}
             <p><strong>Recipient:</strong> {letter.recipient}</p>
             <p><strong>Message:</strong> {letter.message}</p>
           </li>
